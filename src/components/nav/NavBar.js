@@ -16,7 +16,7 @@ export const NavBar = () => {
                 Navigation link
             </li>
             {
-                (localStorage.getItem("lu_token") !== null) ?
+                (localStorage.getItem("daisy_token") !== null) ?
                     <li className="nav-item">
                         <button className="nav-link fakeLink"
                             onClick={() => {
