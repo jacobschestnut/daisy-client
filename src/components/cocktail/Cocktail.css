@@ -1,3 +1,8 @@
+.main {
+    display: flex;
+    justify-content: center;
+}
+
 .cocktail-card {
     width: 300px;
     display: flex;
@@ -21,4 +26,69 @@
     flex-shrink: 0;
     max-width: 100%;
     max-height: 100%;
+}
+.cocktail {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px 40px 40px;
+}
+
+.cocktail-info {
+    text-align: center;
+}
+
+.cocktail-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    flex-wrap: wrap;
+}
+
+.cocktail-img {
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.ingredients {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.ingredients p {
+    font-weight: bold;
+}
+
+.cocktail-description {
+    font-style: italic;
+}
+
+.ingredient {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#spacer-left {
+    width: 50%;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#spacer-right {
+    width: 20%;
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
