@@ -5,7 +5,10 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
+// const navDropdownTitle = (<Glyphicon glyph="star"> Dropdown </Glyphicon>);
+
 export const Daisy = () => (
+
     <>
         <Route render={() => {
             if (localStorage.getItem("daisy_token")) {

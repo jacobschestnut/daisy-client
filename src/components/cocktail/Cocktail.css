@@ -1,6 +1,10 @@
 .main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background-color: #CD533B;
+    margin: 0;
 }
 
 .cocktail-card {
@@ -28,26 +32,53 @@
     max-height: 100%;
 }
 .cocktail {
-    width: 300px;
+    background-color: #6CD4FF;
+    border: .35rem solid #050401;
+    border-radius: 30px;
+    padding: 2rem;
+    margin: 8rem 0 8rem 0;
+    width: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 40px 40px 40px;
+    text-align: center;
+}
+
+.cocktail p {
+    width: 20rem;
+}
+
+#cocktail-name {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0;
+    font-size: 3em;
+    color:#F5F8DE;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .cocktail-info {
     text-align: center;
+    width: 20rem;
+    background-color: #F5F8DE;
+    padding: 2rem;
+    border: .25rem solid #050401;
+    border-radius: 18px;
+    margin-bottom: 2rem;
 }
 
 .cocktail-img-wrapper {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 300px;
-    flex-wrap: wrap;
+    width: 20rem;
+    border: .25rem solid #050401;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
 .cocktail-img {
@@ -57,12 +88,13 @@
 }
 
 .ingredients {
-    margin: 0;
+    /* margin: 0;
     padding: 0;
-    border: 0;
+    border: 0; */
+    font-weight: bold;
 }
 
-.ingredients p {
+.ingredient p {
     font-weight: bold;
 }
 
@@ -91,4 +123,5 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-left: 2rem;;
 }

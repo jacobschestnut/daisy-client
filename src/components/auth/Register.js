@@ -36,6 +36,7 @@ export const Register = () => {
                 .then(res => {
                     if ("token" in res) {
                         localStorage.setItem("daisy_token", res.token)
+                        localStorage.setItem("userId", res.userId)
                         history.push("/")
                     }
                 })

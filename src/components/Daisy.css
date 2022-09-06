@@ -5,12 +5,13 @@
   text-align: center;
 }
 
-* {
+/* * {
   background-color: #CD533B;
-}
+} */
+
 /* --------------------------------------- */
 
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -47,4 +48,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

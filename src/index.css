@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 /*Typography
 --------------------------------------------------------------*/
 
@@ -9,11 +11,12 @@ body, button, input, select, textarea {
     line-height: 1.5;
     padding: 0;
     margin: 0;
+	height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Patua One", serif;
-    letter-spacing: 2px;
+	font-family: 'Bangers';
+    letter-spacing: .4rem;
 }
 
 code {

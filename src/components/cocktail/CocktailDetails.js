@@ -8,6 +8,8 @@ export const CocktailDetails = () => {
     const [cocktailId, setCocktailId] = useState(parseInt(params.cocktailId));
     const [cocktail, setCocktail] = useState({});
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
+    // const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
+    const userId = 1
 
     useEffect(() => {
 
@@ -21,15 +23,24 @@ export const CocktailDetails = () => {
 
     }, []);
 
+    let button;
+    const deleteAuth = () => {
+        if (cocktail.creator?.id == userId) {
+            button = <button onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
+        }
+    }
+
+    deleteAuth();
+
     return (
         <div className="main">
             <div className="cocktail">
-                <h3>{cocktail.name}</h3>
+                <h3 id="cocktail-name">{cocktail.name}</h3>
                 <div className="cocktail-img-wrapper">
                     <img className="cocktail-img" src={cocktail.img_url} />
                 </div>
+                <p className="cocktail-description">{cocktail.description}</p>
                 <div className="cocktail-info">
-                    <p className="cocktail-description">{cocktail.description}</p>
                     <div className="ingredients">
                         {cocktailIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 1)
@@ -142,8 +153,34 @@ export const CocktailDetails = () => {
                                 )
                         })}
                     </div>
+                    <div className="ingredient">
+                        <div id="spacer-right">
+                            <p>Preparation:</p>
+                        </div>
+                        <div id="spacer-left">
+                            <p className="ingredients">{cocktail.preparation?.label}</p>     
+                        </div>
+                    </div>
+                    <div className="ingredient">
+                        <div id="spacer-right">
+                            <p>Glass:</p>
+                        </div>
+                        <div id="spacer-left">
+                            <p className="ingredients">{cocktail.glass?.label}</p>
+                        </div>
+                    </div>
+                    <div className="ingredient">
+                        <div id="spacer-right">
+                            <p>Ice:</p>
+                        </div>
+                        <div id="spacer-left">
+                            <p className="ingredients">{cocktail.ice?.label}</p>
+                        </div>
+                    </div>
+                    <p className="instructions">{cocktail.instructions}</p>
                 </div>
             </div>
+            {button}
         </div>
     )
 }
