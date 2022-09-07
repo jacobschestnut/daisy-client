@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
-import { getCocktails } from "./CocktailManager.js"
+import { getCocktails } from "../fetch/CocktailManager.js"
 import { CocktailCard } from "./CocktailCard.js"
 import "./Cocktail.css"
 import "../Daisy.css"
@@ -15,17 +15,19 @@ export const CocktailList = () => {
 
     return (
         <>
-            <div className="cocktails">
-                <section className="cocktail_cards">
-                        {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} />)}
-                </section>
-            </div>
-            <div className="center">
-                <button className="btn"
-                    onClick={() => {
-                        history.push({ pathname: "/cocktails/new" })
-                    }}
-                >Add Cocktail</button>
+            <div className="main">
+                <div className="cocktails">
+                    <section className="cocktail_cards">
+                            {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} />)}
+                    </section>
+                </div>
+                <div>
+                    <button className="btn"
+                        onClick={() => {
+                            history.push({ pathname: "/newcocktail" })
+                        }}
+                    >Add Cocktail</button>
+                </div>
             </div>
         </>
     )

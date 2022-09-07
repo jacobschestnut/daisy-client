@@ -10,7 +10,7 @@ export const NavBar = () => {
             {
                 (localStorage.getItem("daisy_token") !== null) ?
                     <li className="nav-item">
-                        <button className="nav-link fakeLink"
+                        <button className="btn"
                             onClick={() => {
                                 localStorage.removeItem("daisy_token")
                                 localStorage.removeItem("userId")

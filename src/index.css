@@ -4,8 +4,8 @@
 /*Typography
 --------------------------------------------------------------*/
 
-body, button, input, select, textarea {
-    color: #404040;
+body, input, select, textarea {
+    color: #050401;
     font-family: "Comfortaa", Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
@@ -44,7 +44,8 @@ code {
 /* General button style */
 .btn {
 	border: none;
-	font-family: Menlo;
+	font-family: 'Bangers';
+    letter-spacing: .4rem;
 	font-size: inherit;
 	color: inherit;
 	background: none;
@@ -53,7 +54,6 @@ code {
 	display: inline-block;
 	margin: 15px 30px;
 	text-transform: uppercase;
-	letter-spacing: 1px;
 	font-weight: 700;
 	outline: none;
 	position: relative;

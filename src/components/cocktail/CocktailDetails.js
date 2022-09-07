@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getCocktailById, getCocktailIngredients } from "./CocktailManager"
+import { getCocktailById, getCocktailIngredients } from "../fetch/CocktailManager"
 import "./Cocktail.css"
 
 export const CocktailDetails = () => {
@@ -23,10 +23,12 @@ export const CocktailDetails = () => {
 
     }, []);
 
-    let button;
+    let del;
+    let edit;
     const deleteAuth = () => {
         if (cocktail.creator?.id == userId) {
-            button = <button onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
+            edit = <button className="btn" onClick={() => handleEditCocktail(cocktail.id)}>Edit</button>
+            del = <button className="btn" onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
         }
     }
 
@@ -180,7 +182,8 @@ export const CocktailDetails = () => {
                     <p className="instructions">{cocktail.instructions}</p>
                 </div>
             </div>
-            {button}
+            {edit}
+            {del}
         </div>
     )
 }
