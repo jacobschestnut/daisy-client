@@ -3,21 +3,24 @@ import { useHistory } from 'react-router-dom'
 import { getIngredients } from "../fetch/IngredientsManager"
 import { getPreparations, getIce, getGlass, createCocktail } from "../fetch/CocktailManager"
 import "./Cocktail.css"
+import { CocktailIngredients } from "./CocktailIngredientForm"
 
 
 export const CocktailForm = () => {
     const history = useHistory()
-    const [ingredients, setIngredients] = useState([]);
+    const [cocktailIngredients, setCocktailIngredients] = useState([]);
+    const [newIngredients, setNewIngredients] = useState([]);
     const [preparations, setPreparations] = useState([]);
     const [ice, setIce] = useState([]);
     const [glass, setGlass] = useState([]);
-    // const [spirits, setSpirits] = useState([])
-    // const [juice, setJuices] = useState([]);
-    // const [bitters, setBitters] = useState([]);
-    // const [garnishes, setGarnishes] = useState([]);
-    // const [fruits, setFruits] = useState([]);
-    // const [sweeteners, setSweeteners] = useState([]);
-    // const [miscIngredients, setMiscIngredients] = useState([]);
+
+    const getCocktailIngredients = (data) => {
+        setCocktailIngredients(data)
+    };
+
+    const getNewIngredients = (data) => {
+        setNewIngredients(data)
+    };
 
     const [currentCocktail, setCurrentCocktail] = useState({
         name: "",
@@ -34,13 +37,6 @@ export const CocktailForm = () => {
         getIngredients().then((data) => setIngredients(data))
         getIce().then((data) => setIce(data))
         getGlass().then((data) => setGlass(data))
-        // getSpirits().then((data) => setSpirits(data))
-        // getJuices().then((data) => setJuices(data))
-        // getBitters().then((data) => setBitters(data))
-        // getGarnishes().then((data) => setGarnishes(data))
-        // getFruits().then((data) => setFruits(data))
-        // getSweeteners().then((data) => setSweeteners(data))
-        // getMiscIngredients().then((data) => setMiscIngredients(data))
     }, [])
 
     const changeCocktailState = (domEvent) => {
@@ -152,6 +148,21 @@ export const CocktailForm = () => {
 
                     evt.preventDefault()
 
+                    newIngredients.map(ingredient => {
+                        ingredient.name = ingredient.name
+                        ingredient.type = parseInt(ingredient.type)
+                        console.log(ingredient)
+                    })
+
+// ---------------------------------------------------------------------------------
+                    cocktailIngredients.map((ingredient) => {
+                        ingredient.ingredient = parseInt(ingredient.ingredient)
+                        ingredient.amount = parseFloat(ingredient.amount)
+                        ingredient.unit = parseInt(ingredient.unit)
+
+                        console.log(ingredient)
+                    })
+// ---------------------------------------------------------------------------------
                     const cocktail = {
                         name: currentCocktail.name,
                         description: currentCocktail.description,
@@ -162,8 +173,8 @@ export const CocktailForm = () => {
                         img_url: currentCocktail.img_url
                     }
 
-                    createCocktail(cocktail)
-                        .then(() => history.push("/"))
+                    createCocktail(cocktail)     
+
                 }}
                 className="btn">Submit</button>
         </form>

@@ -1,56 +1,92 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getIngredients, getUnits } from "../fetch/IngredientsManager";
 
 export const CocktailIngredients = () => {
+    const [ingredients, setIngredients] = useState([]);
+    const [units, setUnits] = useState([]);
 
-    const [cocktailIngredient, setCocktailIngredient] = useState([
+    const [cocktailIngredients, setCocktailIngredients] = useState([
         { ingredient: 0, amount: 0, unit: 0 }
     ])
 
-    const handleFormChange = (event, index) => {
-        let data = [...ingredient];
+    useEffect(() => {
+        getIngredients().then((ingredients) => {
+            setIngredients(ingredients);
+        })
+
+        getUnits().then((units) => {
+            setUnits(units);
+        })
+    }, []);
+
+    const handleExistingFormChange = (event, index) => {
+        let data = [...cocktailIngredients];
         data[index][event.target.name] = event.target.value;
-        setCocktailIngredient(data);
+        setCocktailIngredients(data);
     }
 
-    const addFields = () => {
+    const addExistingIngredient = () => {
         let object = {
             ingredient: 0,
             amount: 0,
             unit: 0
         }
 
-        setCocktailIngredient([...cocktailIngredient, object])
+        setCocktailIngredients([...cocktailIngredients, object])
+    }
+
+    const removeExistingIngredient = (index) => {
+        let data = [...cocktailIngredients];
+        data.splice(index, 1)
+        setCocktailIngredients(data)
     }
 
     return (
         <div className="cocktail-ingredient-form">
             <form>
-                {cocktailIngredient.map((form, index) => {
+                {cocktailIngredients.map((form, index) => {
                     return (
                         <div key={index}>
-                            <input
-                                name='ingredient'
-                                placeholder='Ingredient'
-                                onChange={event => handleFormChange(event, index)}
-                                value = {form.ingredient}
-                            />
+                            <select name="ingredient" required autoFocus className="form-control"
+                                value={form.ingredient}
+                                onChange={event => handleExistingFormChange(event, index)}>
+                                <option value="0">Select Ingredient</option>
+                                {
+                                    ingredients.map((ingredient) => (
+                                        <option key={ingredient.id} value={ingredient.id}>
+                                            {ingredient.name}
+                                        </option>
+                                    ))
+                                }
+                            </select>
                             <input
                                 name='amount'
                                 placeholder='Quantity'
-                                onChange={event => handleFormChange(event, index)}
+                                onChange={event => handleExistingFormChange(event, index)}
                                 value = {form.amount}
                             />
-                            <input
-                                name='unit'
-                                placeholder='Unit'
-                                onChange={event => handleFormChange(event, index)}
-                                value = {form.unit}
-                            />
+                            <select name="unit" required autoFocus className="form-control"
+                                value={form.unit}
+                                onChange={event => handleExistingFormChange(event, index)}>
+                                <option value="0">Select unit</option>
+                                {
+                                    units.map((unit) => (
+                                        <option key={unit.id} value={unit.id}>
+                                            {unit.label}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                            <button onClick={() => removeExistingIngredient(index)}>Remove</button>
                         </div>
                     )
                 })}
             </form>
-            <button onClick={addFields}></button>
+            <div className="form-btns">
+                <button onClick={addExistingIngredient}>Add Ingredient</button>
+                {/* <button onClick={addNewIngredient}>Create Ingredient</button> */}
+            </div>
+            
         </div>
     )
 }
