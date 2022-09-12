@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom'
 import { getIngredients, getUnits } from "../fetch/IngredientsManager"
 import { getPreparations, getIce, getGlass, createCocktail } from "../fetch/CocktailManager"
+import { IngredientPopup } from "../ingredient/IngredientPopup"
+import { IngredientForm } from "../ingredient/IngredientForm"
 import "./Cocktail.css"
 
 export const CocktailForm = () => {
     const history = useHistory()
+    const [buttonPopup, setButtonPopup] = useState(false);
     const [newIngredients, setNewIngredients] = useState([]);
     const [preparations, setPreparations] = useState([]);
     const [ice, setIce] = useState([]);
@@ -14,7 +17,7 @@ export const CocktailForm = () => {
     const [units, setUnits] = useState([]);
 
     const [cocktailIngredients, setCocktailIngredients] = useState([
-        { ingredient: 0, amount: 0, unit: 0 }
+        { ingredient: 0, amount: "", unit: 0 }
     ])
 
     const [currentCocktail, setCurrentCocktail] = useState({
@@ -51,7 +54,7 @@ export const CocktailForm = () => {
     const addExistingIngredient = () => {
         let object = {
             ingredient: 0,
-            amount: 0,
+            amount: "",
             unit: 0
         }
 
@@ -65,12 +68,13 @@ export const CocktailForm = () => {
     }
 
     return (
+        <div className="form">
         <form className="cocktail-form">
-            <h2 className="cocktail-form-title">New Cocktail</h2>
-
+            <h3 className="cocktail-form-title" id="cocktail-name">New Cocktail</h3>
+                <label htmlFor="ingredient">Ingredients:</label>
                 {cocktailIngredients.map((form, index) => {
                     return (
-                        <div key={index} className="form-group">
+                        <div key={index} className="form-group" id="ingredient-fields">
                             <select name="ingredient" required autoFocus className="form-control"
                                 value={form.ingredient}
                                 onChange={event => handleIngredientFormChange(event, index)}>
@@ -86,14 +90,14 @@ export const CocktailForm = () => {
                             <input
                                 className="form-control"
                                 name='amount'
-                                placeholder='Quantity'
+                                placeholder='Amount'
                                 onChange={event => handleIngredientFormChange(event, index)}
                                 value = {form.amount}
                             />
                             <select name="unit" required autoFocus className="form-control"
                                 value={form.unit}
                                 onChange={event => handleIngredientFormChange(event, index)}>
-                                <option value="0">Select unit</option>
+                                <option value="0">Select Unit</option>
                                 {
                                     units.map((unit) => (
                                         <option key={unit.id} value={unit.id}>
@@ -102,13 +106,15 @@ export const CocktailForm = () => {
                                     ))
                                 }
                             </select>
-                            <button onClick={() => removeExistingIngredient(index)}>Remove</button>
+                            <button onClick={() => removeExistingIngredient(index)} className="btn" id="x-btn">X</button>
                         </div>
                     )
                 })}
                 <div className="form-btns">
-                    <button onClick={addExistingIngredient}>Add Ingredient</button>
+                    <button onClick={addExistingIngredient} className="btn">Add Ingredient</button>
                     {/* <button onClick={addNewIngredient}>Create Ingredient</button> */}
+                    <p>don't see an ingredient you need?</p>
+                    <button onClick={() => setButtonPopup(true)} className="btn">Create New Ingredient</button>
                 </div>
             
 {/* ------------------------------------------------------------------------------------------------- */}
@@ -211,14 +217,6 @@ export const CocktailForm = () => {
 
                     evt.preventDefault()
 // ---------------------------------------------------------------------------------
-                    cocktailIngredients.map((ingredient) => {
-                        ingredient.ingredient = parseInt(ingredient.ingredient)
-                        ingredient.amount = parseFloat(ingredient.amount)
-                        ingredient.unit = parseInt(ingredient.unit)
-
-                        console.log(ingredient)
-                    })
-// ---------------------------------------------------------------------------------
                     const cocktail = {
                         name: currentCocktail.name,
                         description: currentCocktail.description,
@@ -229,10 +227,23 @@ export const CocktailForm = () => {
                         img_url: currentCocktail.img_url
                     }
 
-                    console.log(cocktail)     
+                    console.log(cocktail)
+// ---------------------------------------------------------------------------------
+                    cocktailIngredients.map((ingredient) => {
+                        ingredient.ingredient = parseInt(ingredient.ingredient)
+                        ingredient.amount = parseFloat(ingredient.amount)
+                        ingredient.unit = parseInt(ingredient.unit)
+                        ingredient.cocktail = currentCocktail.id
+
+                        console.log(ingredient)
+                    })     
 
                 }}
                 className="btn">Submit</button>
         </form>
+        <IngredientPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <IngredientForm />
+        </IngredientPopup>
+        </div>
     )
 }

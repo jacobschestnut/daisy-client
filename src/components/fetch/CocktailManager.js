@@ -35,6 +35,16 @@ export const createCocktail = (cocktail) => {
         body: JSON.stringify(cocktail)
     })
 }
+export const createCocktailIngredient = (cocktailIngredient, cocktailId) => {
+    return fetch("http://localhost:8000/cocktails", {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cocktailIngredient)
+    })
+}
 
 // -----------------------------------------------------------------------------
 

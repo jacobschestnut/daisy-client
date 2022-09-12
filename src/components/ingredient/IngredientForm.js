@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getIngredientTypes } from "../fetch/IngredientsManager";
+import "./Popup.css"
 
 export const IngredientForm = () => {
 
@@ -41,7 +42,7 @@ export const IngredientForm = () => {
             <form>
                 {newIngredients.map((form, index) => {
                     return (
-                        <div key={index}>
+                        <div key={index} className="ingredient-fields">
                             <input
                                 name='name'
                                 placeholder='Ingredient Name'
@@ -60,26 +61,29 @@ export const IngredientForm = () => {
                                     ))
                                 }
                             </select>
-                            <button onClick={() => removeNewIngredient(index)}>Remove</button>
+                            <button className="btn" id="x-btn" onClick={() => removeNewIngredient(index)}>X</button>
                         </div>
                     )
                 })}
             </form>
-            <button onClick={addNewIngredient}>Add Ingredient</button>
-            <button type="submit"
-                onClick={evt => {
-                    evt.preventDefault()
-                    
-                    newIngredients.map(ingredient => {
-                        ingredient.name = ingredient.name
-                        ingredient.type = parseInt(ingredient.type)
-                        console.log(ingredient)
-                    })
+            <div className="btns">
+                <button className="btn" onClick={addNewIngredient}>Add Ingredient</button>
+                <button type="submit"
+                    onClick={evt => {
+                        evt.preventDefault()
+                        
+                        newIngredients.map(ingredient => {
+                            ingredient.name = ingredient.name
+                            ingredient.type = parseInt(ingredient.type)
+                            console.log(ingredient)
+                        })
 
-                    // createCocktail(cocktail)
-                    //     .then(() => history.push("/"))
-                }}
-                className="btn">Submit</button>
+                        // createCocktail(cocktail)
+                        //     .then(() => history.push("/"))
+                    }}
+                    className="btn">Submit
+                </button>
+            </div>
         </div>
     )
 }
