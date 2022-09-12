@@ -71,6 +71,17 @@ export const CocktailForm = () => {
         <div className="form">
         <form className="cocktail-form">
             <h3 className="cocktail-form-title" id="cocktail-name">New Cocktail</h3>
+
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" name="name" required autoFocus className="form-control"
+                            value={currentCocktail.name}
+                            onChange={changeCocktailState}
+                        />
+                    </div>
+                </fieldset>
+                
                 <label htmlFor="ingredient">Ingredients:</label>
                 {cocktailIngredients.map((form, index) => {
                     return (
@@ -106,7 +117,7 @@ export const CocktailForm = () => {
                                     ))
                                 }
                             </select>
-                            <button onClick={() => removeExistingIngredient(index)} className="btn" id="x-btn">X</button>
+                            <button onClick={() => removeExistingIngredient(index)} className="btn" id="x-btn">remove</button>
                         </div>
                     )
                 })}
@@ -116,17 +127,6 @@ export const CocktailForm = () => {
                     <p>don't see an ingredient you need?</p>
                     <button onClick={() => setButtonPopup(true)} className="btn">Create New Ingredient</button>
                 </div>
-            
-{/* ------------------------------------------------------------------------------------------------- */}
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" required autoFocus className="form-control"
-                            value={currentCocktail.name}
-                            onChange={changeCocktailState}
-                        />
-                    </div>
-                </fieldset>
 
                 <fieldset>
                     <div className="form-group">

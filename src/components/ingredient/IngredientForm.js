@@ -44,6 +44,7 @@ export const IngredientForm = () => {
                     return (
                         <div key={index} className="ingredient-fields">
                             <input
+                                className="form-control"
                                 name='name'
                                 placeholder='Ingredient Name'
                                 onChange={event => handleNewFormChange(event, index)}
@@ -61,14 +62,14 @@ export const IngredientForm = () => {
                                     ))
                                 }
                             </select>
-                            <button className="btn" id="x-btn" onClick={() => removeNewIngredient(index)}>X</button>
+                            <button className="btn" id="x-btn" onClick={() => removeNewIngredient(index)}>remove</button>
                         </div>
                     )
                 })}
             </form>
             <div className="btns">
-                <button className="btn" onClick={addNewIngredient}>Add Ingredient</button>
-                <button type="submit"
+                <button id="ingredient-btn" className="btn" onClick={addNewIngredient}>Add Ingredient</button>
+                <button type="submit" id="popup-submit-btn"
                     onClick={evt => {
                         evt.preventDefault()
                         

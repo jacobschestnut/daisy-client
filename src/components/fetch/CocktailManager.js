@@ -35,7 +35,7 @@ export const createCocktail = (cocktail) => {
         body: JSON.stringify(cocktail)
     })
 }
-export const createCocktailIngredient = (cocktailIngredient, cocktailId) => {
+export const createCocktailIngredient = (cocktailIngredient) => {
     return fetch("http://localhost:8000/cocktails", {
         method: "POST",
         headers:{

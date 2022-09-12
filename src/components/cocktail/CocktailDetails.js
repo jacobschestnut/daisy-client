@@ -8,8 +8,14 @@ export const CocktailDetails = () => {
     const [cocktailId, setCocktailId] = useState(parseInt(params.cocktailId));
     const [cocktail, setCocktail] = useState({});
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
-    // const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
-    const userId = 1
+    const [filteredIngredients, setFilteredIngredients] = useState(
+        cocktailIngredients.filter(ingredient => {
+            console.log(cocktailIngredients)
+            console.log(`this is the cocktail id: ${cocktailId}, and this is the value I'm trying to match it with: ${ingredient.cocktail.id}`)
+            return (ingredient.cocktail.id == parseInt(cocktailId))
+        })
+    );
+    const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
 
     useEffect(() => {
 
@@ -44,7 +50,7 @@ export const CocktailDetails = () => {
                 <p className="cocktail-description">{cocktail.description}</p>
                 <div className="cocktail-info">
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 1)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
@@ -60,7 +66,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 2)
                                 return(
                                     <div className="ingredient" key={ingredient.id} >
@@ -76,7 +82,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 7)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
@@ -92,7 +98,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 6)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
@@ -108,7 +114,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 5)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
@@ -124,7 +130,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 3)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
@@ -140,7 +146,7 @@ export const CocktailDetails = () => {
                         })}
                     </div>
                     <div className="ingredients">
-                        {cocktailIngredients.map(ingredient => {
+                        {filteredIngredients.map(ingredient => {
                             if (ingredient.ingredient?.type.id == 4)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
