@@ -8,14 +8,19 @@ export const CocktailDetails = () => {
     const [cocktailId, setCocktailId] = useState(parseInt(params.cocktailId));
     const [cocktail, setCocktail] = useState({});
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
-    const [filteredIngredients, setFilteredIngredients] = useState(
-        cocktailIngredients.filter(ingredient => {
-            console.log(cocktailIngredients)
-            console.log(`this is the cocktail id: ${cocktailId}, and this is the value I'm trying to match it with: ${ingredient.cocktail.id}`)
-            return (ingredient.cocktail.id == parseInt(cocktailId))
-        })
-    );
+    const [filteredIngredients, setFilteredIngredients] = useState([]);
+
     const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
+
+    const filterCocktailIngredients = () => {
+        let arr = []
+        cocktailIngredients.filter(ingredient => {
+            if (ingredient.cocktail.id == cocktailId) {
+                arr.push(ingredient)
+            }
+            setFilteredIngredients(arr)
+        })
+    }
 
     useEffect(() => {
 
@@ -27,7 +32,13 @@ export const CocktailDetails = () => {
             setCocktailIngredients(ingredients);
         })
 
-    }, []);
+    }, [cocktailId]);
+
+    useEffect(() => {
+
+        filterCocktailIngredients()
+
+    }, [cocktailIngredients]);
 
     let del;
     let edit;

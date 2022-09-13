@@ -81,7 +81,7 @@ export const CocktailForm = () => {
                         />
                     </div>
                 </fieldset>
-                
+
                 <label htmlFor="ingredient">Ingredients:</label>
                 {cocktailIngredients.map((form, index) => {
                     return (
@@ -227,7 +227,7 @@ export const CocktailForm = () => {
                         img_url: currentCocktail.img_url
                     }
 
-                    console.log(cocktail)
+                    console.log("cocktail", cocktail)
 // ---------------------------------------------------------------------------------
                     cocktailIngredients.map((ingredient) => {
                         ingredient.ingredient = parseInt(ingredient.ingredient)
@@ -235,7 +235,7 @@ export const CocktailForm = () => {
                         ingredient.unit = parseInt(ingredient.unit)
                         ingredient.cocktail = currentCocktail.id
 
-                        console.log(ingredient)
+                        console.log("cocktail_ingredients", ingredient)
                     })     
 
                 }}
