@@ -224,10 +224,11 @@ export const CocktailForm = () => {
                         preparation: parseInt(currentCocktail.preparation),
                         glass: parseInt(currentCocktail.glass),
                         ice: parseInt(currentCocktail.ice),
-                        img_url: currentCocktail.img_url
+                        img_url: currentCocktail.img_url,
+                        ingredients: cocktailIngredients
                     }
 
-                    console.log("cocktail", cocktail)
+                    createCocktail(cocktail)
 // ---------------------------------------------------------------------------------
                     cocktailIngredients.map((ingredient) => {
                         ingredient.ingredient = parseInt(ingredient.ingredient)

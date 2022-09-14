@@ -67,7 +67,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                             <p>{ingredient.ingredient.name}</p>
@@ -83,7 +83,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id} >
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                         <p>{ingredient.ingredient.name}</p>
@@ -99,7 +99,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                             <p>{ingredient.ingredient.name}</p>
@@ -115,7 +115,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                             <p>{ingredient.ingredient.name}</p>
@@ -131,7 +131,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                             <p>{ingredient.ingredient.name}</p>
@@ -147,7 +147,7 @@ export const CocktailDetails = () => {
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
                                             <p>{parseFloat(ingredient.amount)}</p>
-                                            <p>{ingredient.unit.label}</p>
+                                            <p>{ingredient.unit?.label}</p>
                                         </div>
                                         <div id="spacer-left">
                                             <p>{ingredient.ingredient.name}</p>
