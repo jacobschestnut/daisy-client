@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getCocktailById, getCocktailIngredients } from "../fetch/CocktailManager"
+import { Link, useParams, useHistory } from "react-router-dom";
+import { getCocktailById, getCocktailIngredients, deleteCocktail } from "../fetch/CocktailManager"
 import "./Cocktail.css"
 
 export const CocktailDetails = () => {
-    const params = useParams()
+    const history = useHistory();
+    const params = useParams();
     const [cocktailId, setCocktailId] = useState(parseInt(params.cocktailId));
     const [cocktail, setCocktail] = useState({});
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
@@ -40,11 +41,17 @@ export const CocktailDetails = () => {
 
     }, [cocktailIngredients]);
 
+    const handleDeleteCocktail = (id) => {
+        deleteCocktail(id)
+        .then(history.push("/cocktails"));
+    }
+
     let del;
     let edit;
+
     const deleteAuth = () => {
-        if (cocktail.creator?.id == userId) {
-            edit = <button className="btn" onClick={() => handleEditCocktail(cocktail.id)}>Edit</button>
+        if (cocktail.creator?.user?.id == userId) {
+            edit = <Link to={{pathname: `/cocktails/${cocktailId}/edit`}}><button className="btn">Edit</button></Link>
             del = <button className="btn" onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
         }
     }

@@ -35,6 +35,7 @@ export const createCocktail = (cocktail) => {
         body: JSON.stringify(cocktail)
     })
 }
+
 export const createCocktailIngredient = (cocktailIngredient) => {
     return fetch("http://localhost:8000/cocktails", {
         method: "POST",
@@ -44,6 +45,26 @@ export const createCocktailIngredient = (cocktailIngredient) => {
         },
         body: JSON.stringify(cocktailIngredient)
     })
+}
+
+export const deleteCocktail = (cocktailId) => {
+    return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
+        method: "DELETE",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`
+        }
+    })
+    .then(res => res.json())
+}
+
+export const editCocktail = (cocktailId) => {
+    return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
+        method: "PUT",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`
+        }
+    })
+    .then(res => res.json())
 }
 
 // -----------------------------------------------------------------------------

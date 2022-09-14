@@ -97,8 +97,6 @@ export const Quiz = () => {
 
                         const result = arr[Math.floor(Math.random()*arr.length)]
 
-                        console.log(result.id)
-
                         history.push(`/cocktails/${result.id}`)
                     }}
                     className="btn">Submit
