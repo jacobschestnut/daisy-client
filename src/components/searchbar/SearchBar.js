@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import "./SearchBar.css";
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+// import SearchIcon from "@material-ui/icons/Search";
+// import CloseIcon from "@material-ui/icons/Close";
 
 export const SearchBar = ({ placeholder, data }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-  const [currentUserId, setCurrentUserId] = useState(JSON.parse(localStorage.getItem("userId")));
-  
-  const API = "http://localhost:8000"
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = data.filter((value) => {
-      return value.username.toLowerCase().includes(searchWord.toLowerCase());
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -25,23 +22,10 @@ export const SearchBar = ({ placeholder, data }) => {
     }
   };
 
-  const clearInput = () => {
-    setFilteredData([]);
-    setWordEntered("");
-  };
-
-  const handleFollow = (userId) => { // takes userId from filtered array as argument
-    return fetch(`${API}/friends`, {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        currentUserId: currentUser.id,
-        userId: userId,
-      })
-    }).then(response => response.json());
-  }
+  // const clearInput = () => {
+  //   setFilteredData([]);
+  //   setWordEntered("");
+  // };
 
   return (
     <div className="search">
@@ -52,24 +36,23 @@ export const SearchBar = ({ placeholder, data }) => {
           value={wordEntered}
           onChange={handleFilter}
         />
-        <div className="searchIcon">
+        {/* <div className="searchIcon">
           {filteredData.length === 0 ? (
             <SearchIcon />
           ) : (
             <CloseIcon id="clearBtn" onClick={clearInput} />
           )}
-        </div>
+        </div> */}
       </div>
       {filteredData.length != 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <div className="dataResultWrapper" key={value.id}>
-                <Link className="dataItem" to={`/users/${value.id}`}>
-                  <p>{value.username}</p>
+                <Link className="dataItem" to={`/cocktails/${value.id}`}>
+                  <p>{value.name}</p>
                   <div className="space"></div>
                 </Link>
-                <button id="ejectBtn"><img src="http://simpleicon.com/wp-content/uploads/play1.png" id="ejectImg" type="button" onClick={() => handleFollow(value.id)}/></button>
               </div>
             );
           })}

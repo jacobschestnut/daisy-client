@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
 import { getCocktails } from "../fetch/CocktailManager.js"
 import { CocktailCard } from "./CocktailCard.js"
+import { SearchBar } from "../searchbar/SearchBar"
 import "./Cocktail.css"
 import "../Daisy.css"
 
@@ -15,11 +16,11 @@ export const CocktailList = () => {
 
     return (
         <>
-            {/* <div className="searchWrapper">
-                <SearchBar id="searchBar-font" placeholder="Search for cocktails..." data={cocktails}/>
-            </div> */}
+            <div className="searchWrapper">
+                <SearchBar id="searchBar-font" placeholder="Search for a cocktail..." data={cocktails}/>
+            </div>
             <div className="main">
-                <div className="cocktails">
+                <div id="cocktails">
                     <section className="cocktail_cards">
                             {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} />)}
                     </section>

@@ -8,8 +8,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: #CD533B; */
     margin: 0;
+}
+
+#cocktails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cocktail_cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 #cocktail-card {
@@ -25,6 +37,7 @@ body {
     margin: 0 40px 40px 40px;
     text-decoration: none;
     color: #050401;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #cocktail-card:visited { text-decoration: none; }
@@ -100,6 +113,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .cocktail p {
@@ -197,6 +211,7 @@ body {
     background-color: #6CD4FF;
     border: .25rem solid #050401;
     border-radius: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #ingredient-fields {
