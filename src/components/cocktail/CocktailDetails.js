@@ -51,7 +51,7 @@ export const CocktailDetails = () => {
 
     const deleteAuth = () => {
         if (cocktail.creator?.user?.id == userId) {
-            edit = <Link to={{pathname: `/cocktails/${cocktailId}/edit`}}><button className="btn">Edit</button></Link>
+            edit = <Link to={{pathname: `/cocktails/edit/${cocktailId}`}}><button className="btn">Edit</button></Link>
             del = <button className="btn" onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
         }
     }
@@ -69,6 +69,7 @@ export const CocktailDetails = () => {
                 <div className="cocktail-info">
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
+                            console.log(filteredIngredients)
                             if (ingredient.ingredient?.type.id == 1)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>

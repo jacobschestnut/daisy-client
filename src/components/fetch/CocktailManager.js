@@ -57,14 +57,16 @@ export const deleteCocktail = (cocktailId) => {
     .then(res => res.json())
 }
 
-export const editCocktail = (cocktailId) => {
-    return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
+export const editCocktail = (cocktail) => {
+    return fetch(`http://localhost:8000/cocktails/${cocktail.id}`, {
         method: "PUT",
-        headers:{
-            "Authorization": `Token ${localStorage.getItem("daisy_token")}`
-        }
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(cocktail)
     })
-    .then(res => res.json())
+        .then(getCocktails)
 }
 
 // -----------------------------------------------------------------------------

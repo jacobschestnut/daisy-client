@@ -7,6 +7,17 @@ export const getIngredients = () => {
     .then(res => res.json())
 }
 
+export const createIngredient = (ingredient) => {
+    return fetch("http://localhost:8000/ingredients", {
+        method: "POST",
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(ingredient)
+    })
+}
+
 export const getIngredientTypes = () => {
     return fetch(`http://localhost:8000/ingredient_types`, {
         headers:{

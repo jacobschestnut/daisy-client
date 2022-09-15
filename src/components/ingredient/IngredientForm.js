@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getIngredientTypes } from "../fetch/IngredientsManager";
+import { createIngredient, getIngredientTypes } from "../fetch/IngredientsManager";
 import "./Popup.css"
 
 export const IngredientForm = () => {
@@ -76,12 +76,10 @@ export const IngredientForm = () => {
                         newIngredients.map(ingredient => {
                             ingredient.name = ingredient.name
                             ingredient.type = parseInt(ingredient.type)
-                            console.log(ingredient)
+                            createIngredient(ingredient)
                         })
-
-                        // createCocktail(cocktail)
-                        //     .then(() => history.push("/"))
                     }}
+                    
                     className="btn">Submit
                 </button>
             </div>

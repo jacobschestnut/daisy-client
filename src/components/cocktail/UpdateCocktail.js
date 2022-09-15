@@ -5,13 +5,11 @@ import "./Cocktail.css"
 
 export const UpdateCocktail = () => {
     const history = useHistory()
-    const params = useParams()
-    const [cocktailId, setCocktailId] = useState(parseInt(params.cocktailId));
+    const { cocktailId } = useParams()
     const [preparations, setPreparations] = useState([]);
     const [ice, setIce] = useState([]);
     const [glass, setGlass] = useState([]);
     const [currentCocktail, setCurrentCocktail] = useState({
-        id:"",
         name: "",
         description: "",
         instructions: "",
@@ -20,13 +18,13 @@ export const UpdateCocktail = () => {
         ice: 0,
         img_url: ""
     })
-
+    
     useEffect(() => {
+        getCocktailById(cocktailId).then((data) => setCurrentCocktail(data))
         getPreparations().then((data) => setPreparations(data))
         getIce().then((data) => setIce(data))
         getGlass().then((data) => setGlass(data))
-        getCocktailById(cocktailId).then((data) => setCurrentCocktail(data))
-    }, [cocktailId])
+    }, [])
 
     const changeCocktailState = (domEvent) => {
         let newCocktail = {...currentCocktail}
@@ -64,7 +62,7 @@ export const UpdateCocktail = () => {
                     <div className="form-group">
                         <label htmlFor="preparation">Preparation:</label>
                         <select name="preparation" required autoFocus className="form-control"
-                            value={currentCocktail.preparation}
+                            value={currentCocktail.preparation?.id}
                             onChange={changeCocktailState}>
                             {
                                 preparations.map((preparation) => (
@@ -81,7 +79,7 @@ export const UpdateCocktail = () => {
                     <div className="form-group">
                         <label htmlFor="ice">Ice:</label>
                         <select name="ice" required autoFocus className="form-control"
-                            value={currentCocktail.ice}
+                            value={currentCocktail.ice?.id}
                             onChange={changeCocktailState}>
                             {
                                 ice.map((ice) => (
@@ -98,7 +96,7 @@ export const UpdateCocktail = () => {
                     <div className="form-group">
                         <label htmlFor="glass">Glass:</label>
                         <select name="glass" required autoFocus className="form-control"
-                            value={currentCocktail.glass}
+                            value={currentCocktail.glass?.id}
                             onChange={changeCocktailState}>
                             {
                                 glass.map((glass) => (
@@ -141,13 +139,14 @@ export const UpdateCocktail = () => {
                         name: currentCocktail.name,
                         description: currentCocktail.description,
                         instructions: currentCocktail.instructions,
-                        preparation: parseInt(currentCocktail.preparation),
-                        glass: parseInt(currentCocktail.glass),
-                        ice: parseInt(currentCocktail.ice),
+                        preparation: parseInt(currentCocktail.preparation.id),
+                        glass: parseInt(currentCocktail.glass.id),
+                        ice: parseInt(currentCocktail.ice.id),
                         img_url: currentCocktail.img_url
                     }
-
-                    editCocktail(cocktail).then(history.push({pathname: `/cocktails/${cocktailId}`}))
+                    
+                    console.log(cocktail)
+                    // editCocktail(cocktail).then(history.push("/cocktails"))
 
                 }}
                 className="btn">Submit</button>

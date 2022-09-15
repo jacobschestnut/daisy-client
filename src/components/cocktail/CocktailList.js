@@ -15,6 +15,9 @@ export const CocktailList = () => {
 
     return (
         <>
+            {/* <div className="searchWrapper">
+                <SearchBar id="searchBar-font" placeholder="Search for cocktails..." data={cocktails}/>
+            </div> */}
             <div className="main">
                 <div className="cocktails">
                     <section className="cocktail_cards">

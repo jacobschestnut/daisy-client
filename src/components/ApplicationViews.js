@@ -13,7 +13,7 @@ export const ApplicationViews = () => {
         <Route exact path="/quiz"><Quiz /></Route>
         <Route exact path="/cocktails"><CocktailList /></Route>
         <Route exact path="/cocktails/:cocktailId"><CocktailDetails /></Route>
-        <Route exact path="/cocktails/:cocktailId/edit"><UpdateCocktail /></Route>
+        <Route exact path="/cocktails/edit/:cocktailId"><UpdateCocktail /></Route>
         <Route path="/newcocktail"><CocktailForm /></Route>
     </>
 }

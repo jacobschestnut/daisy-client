@@ -229,14 +229,12 @@ export const CocktailForm = () => {
                     }
 
                     createCocktail(cocktail)
+                    .then(() => history.push("/cocktails"))
 // ---------------------------------------------------------------------------------
                     cocktailIngredients.map((ingredient) => {
                         ingredient.ingredient = parseInt(ingredient.ingredient)
                         ingredient.amount = parseFloat(ingredient.amount)
                         ingredient.unit = parseInt(ingredient.unit)
-                        ingredient.cocktail = currentCocktail.id
-
-                        console.log("cocktail_ingredients", ingredient)
                     })     
 
                 }}
