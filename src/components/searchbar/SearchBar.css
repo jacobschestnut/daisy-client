@@ -16,7 +16,7 @@ margin-bottom: 2em;
 
 .search input {
 background-color: white;
-border: .25rem solid #050401;
+border: 2px solid black;
 border-radius: 18px;
 font-size: 18px;
 padding: 15px;
