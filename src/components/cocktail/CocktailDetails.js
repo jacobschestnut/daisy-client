@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getCocktailById, getCocktailIngredients, deleteCocktail } from "../fetch/CocktailManager"
+import { getCocktailById, getCocktailIngredients, deleteCocktail, getIngredientsByCocktail } from "../fetch/CocktailManager"
+import { getIngredientTypes } from "../fetch/IngredientsManager";
 import "./Cocktail.css"
 
 export const CocktailDetails = () => {
@@ -13,15 +14,15 @@ export const CocktailDetails = () => {
 
     const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
 
-    const filterCocktailIngredients = () => {
-        let arr = []
-        cocktailIngredients.filter(ingredient => {
-            if (ingredient.cocktail.id == cocktailId) {
-                arr.push(ingredient)
-            }
-            setFilteredIngredients(arr)
-        })
-    }
+    // const filterCocktailIngredients = () => {
+    //     let arr = []
+    //     cocktailIngredients.filter(ingredient => {
+    //         if (ingredient.cocktail.id == cocktailId) {
+    //             arr.push(ingredient)
+    //         }
+    //         setFilteredIngredients(arr)
+    //     })
+    // }
 
     useEffect(() => {
 
@@ -29,17 +30,19 @@ export const CocktailDetails = () => {
             setCocktail(cocktail);
         })
 
-        getCocktailIngredients().then((ingredients) => {
-            setCocktailIngredients(ingredients);
-        })
+        // getCocktailIngredients().then((ingredients) => {
+        //     setCocktailIngredients(ingredients);
+        // })
+
+        getIngredientsByCocktail(cocktailId).then((data) => {setFilteredIngredients(data)})
 
     }, [cocktailId]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        filterCocktailIngredients()
+    //     filterCocktailIngredients()
 
-    }, [cocktailIngredients]);
+    // }, [cocktailIngredients]);
 
     const handleDeleteCocktail = (id) => {
         deleteCocktail(id)
@@ -70,7 +73,7 @@ export const CocktailDetails = () => {
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
                             console.log(filteredIngredients)
-                            if (ingredient.ingredient?.type.id == 1)
+                            if (ingredient.ingredient?.type == 1)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
@@ -86,7 +89,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 2)
+                            if (ingredient.ingredient?.type == 2)
                                 return(
                                     <div className="ingredient" key={ingredient.id} >
                                         <div id="spacer-right">
@@ -102,7 +105,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 7)
+                            if (ingredient.ingredient?.type == 7)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
@@ -118,7 +121,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 6)
+                            if (ingredient.ingredient?.type == 6)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
@@ -134,7 +137,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 5)
+                            if (ingredient.ingredient?.type == 5)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
@@ -150,7 +153,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 3)
+                            if (ingredient.ingredient?.type == 3)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">
@@ -166,7 +169,7 @@ export const CocktailDetails = () => {
                     </div>
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            if (ingredient.ingredient?.type.id == 4)
+                            if (ingredient.ingredient?.type == 4)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
                                         <div id="spacer-right">

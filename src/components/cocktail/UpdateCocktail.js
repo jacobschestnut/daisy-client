@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { getPreparations, getIce, getGlass, editCocktail, getCocktailById } from "../fetch/CocktailManager"
+import { getPreparations, getIce, getGlass, editCocktail, getCocktailById, getIngredientsByCocktail } from "../fetch/CocktailManager"
 import { getIngredients, getUnits } from "../fetch/IngredientsManager"
 import { IngredientPopup } from "../ingredient/IngredientPopup"
 import { IngredientForm } from "../ingredient/IngredientForm"
@@ -27,7 +27,17 @@ export const UpdateCocktail = () => {
         ingredients: []
     })
 
+    const fixIngredients = (ingredients) => {
+       setCocktailIngredients(ingredients.map((ingredient) => {
+            let new_ingredient = ingredient
+            new_ingredient.unit = ingredient.unit.id
+            new_ingredient.ingredient = ingredient.ingredient.id
+            return new_ingredient
+        }))
+    }
+
     useEffect(() => {
+        getIngredientsByCocktail(cocktailId).then((data) => fixIngredients(data))
         getPreparations().then((data) => setPreparations(data))
         getIngredients().then((data) => setIngredients(data))
         getIce().then((data) => setIce(data))
@@ -43,7 +53,6 @@ export const UpdateCocktail = () => {
                     glass: parseInt(data.glass.id),
                     ice: parseInt(data.ice.id),
                     img_url: data.img_url,
-                    ingredients: data.ingredients
                 })
                 console.log(currentCocktail)
                 // setCocktailIngredients(data.ingredients)  
@@ -77,10 +86,16 @@ export const UpdateCocktail = () => {
         setCocktailIngredients([...cocktailIngredients, object])
     }
 
-    const removeExistingIngredient = (index) => {
-        let data = [...cocktailIngredients];
-        data.splice(index, 1)
-        setCocktailIngredients(data)
+    const removeExistingIngredient = (id) => {
+        // let data = [...cocktailIngredients];
+        // console.log("pre delete", data)
+        // data.splice(index, 1)
+        // setCocktailIngredients(data)
+        // console.log("post", data)
+        // console.log("ingredients", cocktailIngredients)
+        const newList = cocktailIngredients.filter((item) => item.id !== id);
+        setCocktailIngredients(newList);
+        console.log("c ingredients", cocktailIngredients)
     }
 
     return (
@@ -100,7 +115,6 @@ export const UpdateCocktail = () => {
 
                 <label htmlFor="ingredient">Ingredients:</label>
                 {cocktailIngredients.map((form, index) => {
-                    console.log('test', form)
                     return (
                         <div key={index} className="form-group" id="ingredient-fields">
                             <select name="ingredient" required autoFocus className="form-control"
@@ -134,7 +148,8 @@ export const UpdateCocktail = () => {
                                     ))
                                 }
                             </select>
-                            <button onClick={() => removeExistingIngredient(index)} className="btn" id="x-btn">remove</button>
+                            <button onClick={(e) => {e.preventDefault()
+                                removeExistingIngredient(form.id)}} className="btn" id="x-btn">remove</button>
                         </div>
                     )
                 })}
@@ -234,6 +249,7 @@ export const UpdateCocktail = () => {
 
                     evt.preventDefault()
 
+                    console.log("submit", cocktailIngredients)
                     const cocktail = {
                         id: currentCocktail.id,
                         name: currentCocktail.name,

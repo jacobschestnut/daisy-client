@@ -7,6 +7,15 @@ export const getCocktails = () => {
         .then(response => response.json())
 }
 
+export const getIngredientsByCocktail = (cocktailId) => {
+    return fetch(`http://localhost:8000/cocktail_ingredients?cocktail=${cocktailId}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("daisy_token")}`
+        }
+    })
+    .then(res => res.json())
+}
+
 export const getCocktailById = (cocktailId) => {
     return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
         headers:{
