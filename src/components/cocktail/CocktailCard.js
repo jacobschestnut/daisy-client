@@ -6,8 +6,8 @@ export const CocktailCard = ({cocktail}) => {
     
     return (
         <Link to={`/cocktails/${cocktail.id}`} id="cocktail-card">
-            <h3 id="cocktail-card-name">{cocktail.name}</h3>
             <div className="card-content">
+                <h3 id="cocktail-card-name">{cocktail.name}</h3>
                 <div className="cocktail-card-img-wrapper">
                     <img className="cocktail-card-img" src={cocktail.img_url} />
                 </div>

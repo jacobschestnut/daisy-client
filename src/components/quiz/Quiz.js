@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from 'react-router-dom'
-import { getGlass, getPreparations, getCocktails, getCocktailIngredients } from "../fetch/CocktailManager"
-import { getIngredients, getIngredientTypes } from "../fetch/IngredientsManager"
+import { getGlass, getCocktailIngredients } from "../fetch/CocktailManager"
+import { getIngredients } from "../fetch/IngredientsManager"
 import "./Quiz.css"
 
 export const Quiz = () => {
@@ -87,17 +87,24 @@ export const Quiz = () => {
                     onClick={evt => {
                         evt.preventDefault()
 
-                        let filteredIngredients = cocktailIngredients.filter((ingredient) => ingredient.cocktail.preparation.id == currentParameters.preparation
-                            && ingredient.cocktail.glass.id == currentParameters.glass && ingredient.ingredient.id == currentParameters.spirit)
+                        let filteredIngredients = cocktailIngredients.filter((ingredient) => ingredient.cocktail.preparation == currentParameters.preparation
+                            && ingredient.cocktail.glass == currentParameters.glass && ingredient.ingredient.id == currentParameters.spirit)
 
                         let arr = []
                         filteredIngredients.map(ingredient => {
                             arr.push(ingredient.cocktail)
                         })
 
+                        console.log("cocktails", arr)
+                        console.log("ingredients", cocktailIngredients)
+                        console.log("parameters", currentParameters)
                         const result = arr[Math.floor(Math.random()*arr.length)]
 
-                        history.push(`/cocktails/${result.id}`)
+                        if (arr.length > 0) {
+                            history.push(`/cocktails/${result.id}`)
+                        } else {
+                            alert("Sorry, we don't have a match for you!")
+                        }
                     }}
                     className="btn">Submit
                 </button>
