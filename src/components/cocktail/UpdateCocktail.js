@@ -54,8 +54,6 @@ export const UpdateCocktail = () => {
                     ice: parseInt(data.ice.id),
                     img_url: data.img_url,
                 })
-                console.log(currentCocktail)
-                // setCocktailIngredients(data.ingredients)  
             }                
         )  
     }, [])
@@ -87,15 +85,8 @@ export const UpdateCocktail = () => {
     }
 
     const removeExistingIngredient = (id) => {
-        // let data = [...cocktailIngredients];
-        // console.log("pre delete", data)
-        // data.splice(index, 1)
-        // setCocktailIngredients(data)
-        // console.log("post", data)
-        // console.log("ingredients", cocktailIngredients)
         const newList = cocktailIngredients.filter((item) => item.id !== id);
         setCocktailIngredients(newList);
-        console.log("c ingredients", cocktailIngredients)
     }
 
     return (
@@ -249,7 +240,6 @@ export const UpdateCocktail = () => {
 
                     evt.preventDefault()
 
-                    console.log("submit", cocktailIngredients)
                     const cocktail = {
                         id: currentCocktail.id,
                         name: currentCocktail.name,
@@ -262,7 +252,8 @@ export const UpdateCocktail = () => {
                         ingredients: cocktailIngredients
                     }
 
-                    editCocktail(cocktail).then(history.push('/cocktails'))
+                    // editCocktail(cocktail).then(history.push('/cocktails'))
+                    console.log(cocktail)
 
                 }}
                 className="btn">Submit</button>

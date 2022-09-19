@@ -1,10 +1,22 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: right;
 }
 
 .nav-item {
     flex-basis: 20%;
     list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-icons {
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 4rem;
+    width: 100vw;
 }
