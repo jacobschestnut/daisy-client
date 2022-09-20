@@ -6,6 +6,12 @@ import { SearchBar } from "../searchbar/SearchBar"
 import "./Cocktail.css"
 import "../Daisy.css"
 
+const handleDeleteCocktail = (id) => {
+    deleteCocktail(id)
+    .then(getCocktails().then(data => setCocktails(data)))
+    .then(history.push("/cocktails"));
+}
+
 export const CocktailList = () => {
     const history = useHistory();
     const [ cocktails, setCocktails ] = useState([])
@@ -20,18 +26,18 @@ export const CocktailList = () => {
                 <SearchBar id="searchBar-font" placeholder="Search for a cocktail..." data={cocktails}/>
             </div>
             <div className="main">
-                <div id="cocktails">
-                    <section className="cocktail_cards">
-                            {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} />)}
-                    </section>
-                </div>
-                <div>
                     <button className="btn"
                         onClick={() => {
                             history.push({ pathname: "/newcocktail" })
                         }}
                     >Add Cocktail</button>
                 </div>
+                <div id="cocktails">
+                    <section className="cocktail_cards">
+                            {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} delete={handleDeleteCocktail}/>)}
+                    </section>
+                </div>
+                <div>
             </div>
         </>
     )

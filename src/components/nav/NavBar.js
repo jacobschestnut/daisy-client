@@ -12,12 +12,19 @@ export const NavBar = () => {
                 (localStorage.getItem("daisy_token") !== null) ?
                     <div className="nav-icons">
                         <div className="nav-item">
-                            <Link to="/" className="btn" id="home-btn">
-                                <HomeIcon />
+                            <Link to="/" className="btn" id="btn-no-bg">
+                                Home
+                            </Link>
+                            <Link to="/quiz" className="btn" id="btn-no-bg">
+                                Quiz
+                            </Link>
+                            <Link to="/cocktails" className="btn" id="btn-no-bg">
+                                Cocktails
                             </Link>
                         </div>
                         <div className="nav-item">
                             <button className="btn"
+                                id="btn-no-bg"
                                 onClick={() => {
                                     localStorage.removeItem("daisy_token")
                                     localStorage.removeItem("userId")

@@ -11,6 +11,10 @@ body {
     margin: 0;
 }
 
+.main .btn {
+    margin-bottom: 3rem;
+}
+
 #cocktails {
     display: flex;
     flex-direction: row;

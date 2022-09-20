@@ -64,6 +64,7 @@ export const deleteCocktail = (cocktailId) => {
         }
     })
     .then(res => res.json())
+    .then(getCocktails)
 }
 
 export const editCocktail = (cocktail) => {

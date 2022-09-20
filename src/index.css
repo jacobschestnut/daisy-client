@@ -66,6 +66,12 @@ code {
 	position: relative;
 }
 
+#btn-no-bg {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+}
+
 .btn:hover {
     color: #F5F8DE;
 	background-color: black;
