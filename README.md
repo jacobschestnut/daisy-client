@@ -24,10 +24,10 @@ I'm extremely proud of Daisy because I pushed myself when designing the backend 
 <img src="./screenshots/home.png" width="800" title="home">
 
 ### Quiz
-<img src="./screenshots/quiz.png" width="800" title="my collection">
+<img src="./screenshots/quiz.png" width="800" title="quiz">
 
 ### Cocktail List
-<img src="./screenshots/cocktaillist.png" width="800" title="add tape">
+<img src="./screenshots/cocktaillist.png" width="800" title="cocktail list">
 
 ## Available Scripts
 
