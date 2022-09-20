@@ -8,7 +8,6 @@ import "../Daisy.css"
 
 const handleDeleteCocktail = (id) => {
     deleteCocktail(id)
-    .then(getCocktails().then(data => setCocktails(data)))
     .then(history.push("/cocktails"));
 }
 

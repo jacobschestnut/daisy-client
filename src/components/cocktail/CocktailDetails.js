@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getCocktailById, getCocktailIngredients, deleteCocktail, getIngredientsByCocktail } from "../fetch/CocktailManager"
+import { getCocktailById, getCocktailIngredients, deleteCocktail, getIngredientsByCocktail, getCocktails } from "../fetch/CocktailManager"
 import { getIngredientTypes } from "../fetch/IngredientsManager";
 import "./Cocktail.css"
 
@@ -11,18 +11,14 @@ export const CocktailDetails = () => {
     const [cocktail, setCocktail] = useState({});
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
     const [filteredIngredients, setFilteredIngredients] = useState([]);
-
+    const [cocktails, setCocktails] = useState([]);
     const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("userId")));
 
-    // const filterCocktailIngredients = () => {
-    //     let arr = []
-    //     cocktailIngredients.filter(ingredient => {
-    //         if (ingredient.cocktail.id == cocktailId) {
-    //             arr.push(ingredient)
-    //         }
-    //         setFilteredIngredients(arr)
-    //     })
-    // }
+    useEffect(() => {
+        getCocktails().then((cocktails) => {
+            setCocktails(cocktails);
+        })
+    }, []);
 
     useEffect(() => {
 
@@ -30,22 +26,15 @@ export const CocktailDetails = () => {
             setCocktail(cocktail);
         })
 
-        // getCocktailIngredients().then((ingredients) => {
-        //     setCocktailIngredients(ingredients);
-        // })
-
         getIngredientsByCocktail(cocktailId).then((data) => {setFilteredIngredients(data)})
 
     }, [cocktailId]);
 
-    // useEffect(() => {
-
-    //     filterCocktailIngredients()
-
-    // }, [cocktailIngredients]);
-
     const handleDeleteCocktail = (id) => {
         deleteCocktail(id)
+        .then(getCocktails().then((data) => {
+            setCocktails(data)
+        }))
         .then(history.push("/cocktails"));
     }
 

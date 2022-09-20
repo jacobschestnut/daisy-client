@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory, useParams } from 'react-router-dom'
-import { getPreparations, getIce, getGlass, editCocktail, getCocktailById, getIngredientsByCocktail } from "../fetch/CocktailManager"
+import { getPreparations, getIce, getGlass, editCocktail, getCocktailById, getIngredientsByCocktail, getCocktails } from "../fetch/CocktailManager"
 import { getIngredients, getUnits } from "../fetch/IngredientsManager"
 import { IngredientPopup } from "../ingredient/IngredientPopup"
 import { IngredientForm } from "../ingredient/IngredientForm"
@@ -10,6 +10,7 @@ export const UpdateCocktail = () => {
     const history = useHistory()
     const [buttonPopup, setButtonPopup] = useState(false);
     const { cocktailId } = useParams()
+    const [cocktails, setCocktails] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [preparations, setPreparations] = useState([]);
     const [units, setUnits] = useState([]);
@@ -37,6 +38,7 @@ export const UpdateCocktail = () => {
     }
 
     useEffect(() => {
+        getCocktails().then((cocktails) => {setCocktails(cocktails)})
         getIngredientsByCocktail(cocktailId).then((data) => fixIngredients(data))
         getPreparations().then((data) => setPreparations(data))
         getIngredients().then((data) => setIngredients(data))
@@ -251,7 +253,9 @@ export const UpdateCocktail = () => {
                         ingredients: cocktailIngredients
                     }
 
-                    editCocktail(cocktail).then(history.push('/cocktails'))
+                    editCocktail(cocktail).then(getCocktails().then((data) => {
+                        setCocktails(data)
+                    })).then(history.push('/cocktails'))
 
                 }}
                 className="btn">Submit</button>
