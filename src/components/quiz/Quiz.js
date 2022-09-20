@@ -95,9 +95,6 @@ export const Quiz = () => {
                             arr.push(ingredient.cocktail)
                         })
 
-                        console.log("cocktails", arr)
-                        console.log("ingredients", cocktailIngredients)
-                        console.log("parameters", currentParameters)
                         const result = arr[Math.floor(Math.random()*arr.length)]
 
                         if (arr.length > 0) {

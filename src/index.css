@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
 /*Typography
 --------------------------------------------------------------*/
 
 body, input, select, textarea {
     color: #050401;
-    font-family: "Comfortaa", Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     padding: 0;

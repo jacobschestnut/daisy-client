@@ -54,25 +54,27 @@ export const Register = () => {
             </dialog>
 
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
+                <div className="title-center">
+                    <h1>Register an account</h1>
+                </div>
                 <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
+                    <label htmlFor="firstName">First Name:</label>
                     <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
+                    <label htmlFor="lastName">Last Name:</label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputUsername">Username</label>
+                    <label htmlFor="inputUsername">Username:</label>
                     <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
+                    <label htmlFor="inputPassword">Password:</label>
                     <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
+                    <label htmlFor="verifyPassword">Verify Password:</label>
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                 </fieldset>
                 <fieldset style={{

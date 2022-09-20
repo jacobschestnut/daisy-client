@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { createIngredient, getIngredientTypes } from "../fetch/IngredientsManager";
 import "./Popup.css"
 
 export const IngredientForm = () => {
+
+    const history = useHistory();
 
     const [ingredient_types, setIngredient_types] = useState([]);
 
@@ -35,6 +38,15 @@ export const IngredientForm = () => {
         let data = [...newIngredients];
         data.splice(index, 1)
         setNewIngredients(data)
+    }
+
+    const handleSubmit = () => {
+        newIngredients.map(ingredient => {
+            ingredient.name = ingredient.name
+            ingredient.type = parseInt(ingredient.type)
+            createIngredient(ingredient)
+        })
+        alert("Ingredient(s) Added!")
     }
 
     return (
@@ -71,13 +83,9 @@ export const IngredientForm = () => {
                 <button id="ingredient-btn" className="btn" onClick={addNewIngredient}>Add Ingredient</button>
                 <button type="submit" id="popup-submit-btn"
                     onClick={evt => {
-                        evt.preventDefault()
+                        evt.preventDefault();
                         
-                        newIngredients.map(ingredient => {
-                            ingredient.name = ingredient.name
-                            ingredient.type = parseInt(ingredient.type)
-                            createIngredient(ingredient)
-                        })
+                        handleSubmit(); 
                     }}
                     
                     className="btn">Submit

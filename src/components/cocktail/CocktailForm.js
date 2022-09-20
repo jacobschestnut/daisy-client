@@ -9,7 +9,6 @@ import "./Cocktail.css"
 export const CocktailForm = () => {
     const history = useHistory()
     const [buttonPopup, setButtonPopup] = useState(false);
-    // const [newIngredients, setNewIngredients] = useState([]);
     const [preparations, setPreparations] = useState([]);
     const [ice, setIce] = useState([]);
     const [glass, setGlass] = useState([]);
@@ -37,6 +36,10 @@ export const CocktailForm = () => {
         getGlass().then((data) => setGlass(data))
         getUnits().then((data) => setUnits(data))
     }, [])
+
+    useEffect(() => {
+        getIngredients().then((data) => setIngredients(data))
+    }, [buttonPopup])
 
     const handleIngredientFormChange = (event, index) => {
         let data = [...cocktailIngredients];

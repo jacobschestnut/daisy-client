@@ -146,7 +146,6 @@ export const UpdateCocktail = () => {
                 })}
                 <div className="form-btns">
                     <button onClick={addExistingIngredient} className="btn">Add Ingredient</button>
-                    {/* <button onClick={addNewIngredient}>Create Ingredient</button> */}
                     <p>don't see an ingredient you need?</p>
                     <button onClick={() => setButtonPopup(true)} className="btn">Create New Ingredient</button>
                 </div>
@@ -252,8 +251,7 @@ export const UpdateCocktail = () => {
                         ingredients: cocktailIngredients
                     }
 
-                    // editCocktail(cocktail).then(history.push('/cocktails'))
-                    console.log(cocktail)
+                    editCocktail(cocktail).then(history.push('/cocktails'))
 
                 }}
                 className="btn">Submit</button>

@@ -72,7 +72,6 @@ export const CocktailDetails = () => {
                 <div className="cocktail-info">
                     <div className="ingredients">
                         {filteredIngredients.map(ingredient => {
-                            console.log(filteredIngredients)
                             if (ingredient.ingredient?.type == 1)
                                 return(
                                     <div className="ingredient" key={ingredient.id}>
