@@ -1,7 +1,7 @@
 # Welcome to Daisy!
 Daisy is my final capstone project for Nashville Software School. It's an application designed to introduce novice cocktail enthusiasts to new recipes as well as act as a general recipe guide for mixologists at every level. Daisy is primarily a library for recipes, but the application also features a quiz, which will generate a cocktail recipe based on your craving, and a random cocktail button for when you just need something new. The frontend was built using ReactJS and the backend was built utilizing the Django framework for Python. All design was done from scratch with CSS.
 
-The idea for Daisy came because I wanted to create a tool that bartenders and home mixologists alike could use to make sorting through recipes more convenient. Before becoming a developer, I worked in the industry, and I often had to look up recipes on the fly while at work. A lot of the online resources you can find are bogged down with inflated articles and inconsistant specs for recipes. A major goal for Daisy was to keep the app lightweight and convenient to use.
+The idea for Daisy came because I wanted to create a tool that bartenders and home mixologists alike could use to make sorting through recipes more convenient. Before becoming a developer, I worked in the industry, and I often had to look up recipes on the fly while at work. A lot of the online resources you can find are bogged down with inflated articles and inconsistent specs for recipes. A major goal for Daisy was to keep the app lightweight and convenient to use.
 
 I'm extremely proud of Daisy because I pushed myself when designing the backend more than I have before. There are several many-to-many relationships in place that provided plenty of challenges along the way. This was project was a two week sprint, and considering the short time I was given, I'm happy with how it turned out. It was meant to showcase all that I've learned about backend development, and I think it does exactly that. Thanks for checking it out!
 
@@ -22,14 +22,31 @@ I'm extremely proud of Daisy because I pushed myself when designing the backend 
 
 ## Screenshots:
 
+### Login
+<img src="./screenshots/login.png" width="800" title="login">
+
+### Register
+<img src="./screenshots/register.png" width="800" title="register">
+
 ### Home
 <img src="./screenshots/home.png" width="800" title="home">
 
-### Quiz
-<img src="./screenshots/quiz.png" width="800" title="quiz">
+## Demos:
 
 ### Cocktail List
-<img src="./screenshots/cocktaillist.png" width="800" title="cocktail list">
+<img src="./gifs/cocktail_list.gif" width="800" title="cocktail list">
+
+### Cocktail Details
+<img src="./gifs/cocktail_details.gif" width="800" title="cocktail details">
+
+### Add Cocktail
+<img src="./gifs/add_cocktail.gif" width="800" title="add cocktail">
+
+### Cocktail Quiz
+<img src="./gifs/cocktail_quiz.gif" width="800" title="cocktail quiz">
+
+### Random Cocktail
+<img src="./gifs/random_cocktail.gif" width="800" title="random cocktail">
 
 ## Available Scripts
 
