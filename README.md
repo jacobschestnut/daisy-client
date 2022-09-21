@@ -53,7 +53,7 @@ While in the project directory, run:
 
 ### `pipenv shell`
 
-This start the shell you need in order to deploy the server locally
+This starts the shell you need in order to deploy the server locally
 
 Then run:
 
