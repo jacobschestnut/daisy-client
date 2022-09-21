@@ -1,7 +1,9 @@
 # Welcome to Daisy!
 Daisy is my final capstone project for Nashville Software School. It's an application designed to introduce novice cocktail enthusiasts to new recipes as well as act as a general recipe guide for mixologists at every level. Daisy is primarily a library for recipes, but the application also features a quiz, which will generate a cocktail recipe based on your craving, and a random cocktail button for when you just need something new. The frontend was built using ReactJS and the backend was built utilizing the Django framework for Python. All design was done from scratch with CSS.
 
-I'm extremely proud of Daisy because I pushed myself when designing the backend relationships more than I have before. There are several many-to-many relationships in place that provided plenty of challenges along the way. This was project was a two week sprint, so the front end isn't as fleshed out as I would like it to be. In the end Daisy was meant to showcase what I've learned about backend development, and I am confident that I accomplished that goal.
+The idea for Daisy came because I wanted to create a tool that bartenders and home mixologists alike could use to make sorting through recipes more convenient. Before becoming a developer, I worked in the industry, and I often had to look up recipes on the fly while at work. A lot of the online resources you can find are bogged down with inflated articles and inconsistant specs for recipes. A major goal for Daisy was to keep the app lightweight and convenient to use.
+
+I'm extremely proud of Daisy because I pushed myself when designing the backend more than I have before. There are several many-to-many relationships in place that provided plenty of challenges along the way. This was project was a two week sprint, and considering the short time I was given, I'm happy with how it turned out. It was meant to showcase all that I've learned about backend development, and I think it does exactly that. Thanks for checking it out!
 
 ## Full CRUD:
 - CREATE - create your own cocktail recipes and ingredients
