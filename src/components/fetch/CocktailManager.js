@@ -1,5 +1,5 @@
 export const getCocktails = () => {
-    return fetch("http://localhost:8000/cocktails", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/cocktails", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -8,7 +8,7 @@ export const getCocktails = () => {
 }
 
 export const getIngredientsByCocktail = (cocktailId) => {
-    return fetch(`http://localhost:8000/cocktail_ingredients?cocktail=${cocktailId}`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/cocktail_ingredients?cocktail=${cocktailId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -17,7 +17,7 @@ export const getIngredientsByCocktail = (cocktailId) => {
 }
 
 export const getCocktailById = (cocktailId) => {
-    return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/cocktails/${cocktailId}`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -26,7 +26,7 @@ export const getCocktailById = (cocktailId) => {
 }
 
 export const getCocktailIngredients = () => {
-    return fetch("http://localhost:8000/cocktail_ingredients", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/cocktail_ingredients", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -35,7 +35,7 @@ export const getCocktailIngredients = () => {
 }
 
 export const createCocktail = (cocktail) => {
-    return fetch("http://localhost:8000/cocktails", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/cocktails", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
@@ -46,7 +46,7 @@ export const createCocktail = (cocktail) => {
 }
 
 export const createCocktailIngredient = (cocktailIngredient) => {
-    return fetch("http://localhost:8000/cocktails", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/cocktails", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
@@ -57,7 +57,7 @@ export const createCocktailIngredient = (cocktailIngredient) => {
 }
 
 export const deleteCocktail = (cocktailId) => {
-    return fetch(`http://localhost:8000/cocktails/${cocktailId}`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/cocktails/${cocktailId}`, {
         method: "DELETE",
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
@@ -68,7 +68,7 @@ export const deleteCocktail = (cocktailId) => {
 }
 
 export const editCocktail = (cocktail) => {
-    return fetch(`http://localhost:8000/cocktails/${cocktail.id}`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/cocktails/${cocktail.id}`, {
         method: "PUT",
         headers: {
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
@@ -82,7 +82,7 @@ export const editCocktail = (cocktail) => {
 // -----------------------------------------------------------------------------
 
 export const getPreparations = () => {
-    return fetch("http://localhost:8000/preparations", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/preparations", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -91,7 +91,7 @@ export const getPreparations = () => {
 }
 
 export const getIce = () => {
-    return fetch("http://localhost:8000/ice", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/ice", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -100,7 +100,7 @@ export const getIce = () => {
 }
 
 export const getGlass = () => {
-    return fetch("http://localhost:8000/glass", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/glass", {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }

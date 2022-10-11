@@ -1,5 +1,5 @@
 export const getIngredients = () => {
-    return fetch(`http://localhost:8000/ingredients`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/ingredients`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -8,7 +8,7 @@ export const getIngredients = () => {
 }
 
 export const createIngredient = (ingredient) => {
-    return fetch("http://localhost:8000/ingredients", {
+    return fetch("https://make-my-daisy-server.herokuapp.com/ingredients", {
         method: "POST",
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`,
@@ -19,7 +19,7 @@ export const createIngredient = (ingredient) => {
 }
 
 export const getIngredientTypes = () => {
-    return fetch(`http://localhost:8000/ingredient_types`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/ingredient_types`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
@@ -28,7 +28,7 @@ export const getIngredientTypes = () => {
 }
 
 export const getUnits = () => {
-    return fetch(`http://localhost:8000/units`, {
+    return fetch(`https://make-my-daisy-server.herokuapp.com/units`, {
         headers:{
             "Authorization": `Token ${localStorage.getItem("daisy_token")}`
         }
