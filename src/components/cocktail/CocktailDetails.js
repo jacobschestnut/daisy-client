@@ -42,7 +42,7 @@ export const CocktailDetails = () => {
     let edit;
 
     const deleteAuth = () => {
-        if (cocktail.creator?.user?.id == userId) {
+        if ((cocktail.creator?.user?.id == userId) || (cocktail.creator?.user?.id == 1)) {
             edit = <Link to={{pathname: `/cocktails/edit/${cocktailId}`}}><button className="btn">Edit</button></Link>
             del = <button className="btn" onClick={() => handleDeleteCocktail(cocktail.id)}>Delete</button>
         }
