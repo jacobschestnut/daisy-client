@@ -17,6 +17,7 @@ export const CocktailList = () => {
 
     useEffect(() => {
         getCocktails().then(data => setCocktails(data))
+        console.log(cocktails)
     }, [])
 
     return (
