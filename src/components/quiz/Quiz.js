@@ -7,6 +7,8 @@ import "./Quiz.css"
 export const Quiz = () => {
     const history = useHistory();
     const [cocktail, setCocktail] = useState({});
+    const [upCocktails, setUpCocktails] = useState([]);
+    const [downCocktails, setDownCocktails] = useState([]);
     const [cocktailIngredients, setCocktailIngredients] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [glass, setGlass] = useState([]);
@@ -72,13 +74,8 @@ export const Quiz = () => {
                             value={currentParameters.glass}
                             onChange={changeParameterState}>
                             <option value="0">Select One</option>
-                            {
-                                glass.map((glass) => (
-                                    <option key={glass.id} value={glass.id}>
-                                        {glass.label}
-                                    </option>
-                                ))
-                            }
+                            <option value="1">Up</option>
+                            <option value="2">Down</option>
                         </select>
                     </div>
                 </fieldset>
@@ -88,20 +85,43 @@ export const Quiz = () => {
                         evt.preventDefault()
 
                         let filteredIngredients = cocktailIngredients.filter((ingredient) => ingredient.cocktail.preparation == currentParameters.preparation
-                            && ingredient.cocktail.glass == currentParameters.glass && ingredient.ingredient.id == currentParameters.spirit)
+                            && ingredient.ingredient.id == currentParameters.spirit)
 
                         let arr = []
                         filteredIngredients.map(ingredient => {
                             arr.push(ingredient.cocktail)
                         })
 
-                        const result = arr[Math.floor(Math.random()*arr.length)]
+                        console.log("cocks", arr)
 
-                        if (arr.length > 0) {
+                        let upCocktails = [];
+                        let downCocktails = [];
+
+                        arr.map((cocktail) => {
+                            if ([3, 5, 6, 7, 9].includes(cocktail.glass)) {
+                                upCocktails.push(cocktail)
+                            }
+                        })
+
+                        arr.map((cocktail) => {
+                            if ([1, 2, 4, 7, 8].includes(cocktail.glass)) {
+                                downCocktails.push(cocktail)
+                            }
+                        })
+
+                        console.log("up", upCocktails)
+                        console.log("down", downCocktails)
+                        
+                        if ((parseInt(currentParameters.glass) == 1) && (upCocktails.length > 0)) {
+                            const result = upCocktails[Math.floor(Math.random()*upCocktails.length)]
+                            history.push(`/cocktails/${result.id}`)
+                        } else if ((parseInt(currentParameters.glass) == 2) && (downCocktails.length > 0)) {
+                            const result = downCocktails[Math.floor(Math.random()*downCocktails.length)]
                             history.push(`/cocktails/${result.id}`)
                         } else {
                             alert("Sorry, we don't have a match for you!")
                         }
+
                     }}
                     className="btn">Submit
                 </button>
