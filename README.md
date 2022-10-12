@@ -1,3 +1,5 @@
+# Daisy is Live! Check it out [here](https://www.makemydaisy.app)!
+
 # Welcome to Daisy!
 Daisy is my final capstone project for Nashville Software School. It's an application designed to introduce novice cocktail enthusiasts to new recipes as well as act as a general recipe guide for mixologists at every level. Daisy is primarily a library for recipes, but the application also features a quiz, which will generate a cocktail recipe based on your craving, and a random cocktail button for when you just need something new. The frontend was built using ReactJS and the backend was built utilizing the Django framework for Python. All design was done from scratch with CSS.
 
