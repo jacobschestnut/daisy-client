@@ -45,7 +45,7 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <div className="title-center">
-                        <h1 id="cocktail-name">Make My Daisy</h1>
+                        <h1 id="cocktail-name">Daisy</h1>
                     </div>
                     <fieldset>
                         <label htmlFor="inputUsername">Username:</label>
