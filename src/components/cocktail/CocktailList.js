@@ -20,7 +20,8 @@ export const CocktailList = () => {
         console.log(cocktails)
     }, [])
 
-    return (
+    if (localStorage.getItem("daisy_token")) {
+        return (
         <>
             <div className="searchWrapper">
                 <SearchBar id="searchBar-font" placeholder="Search for a cocktail..." data={cocktails}/>
@@ -40,5 +41,28 @@ export const CocktailList = () => {
                 <div>
             </div>
         </>
-    )
+        )
+    } else {
+        return (
+        <>
+            <div className="searchWrapper">
+                <SearchBar id="searchBar-font" placeholder="Search for a cocktail..." data={cocktails}/>
+            </div>
+            <div className="main">
+                    <button className="btn"
+                        onClick={() => {
+                            history.push({ pathname: "/newcocktail" })
+                        }}
+                    >Add Cocktail</button>
+                </div>
+                <div id="cocktails">
+                    <section className="cocktail_cards">
+                            {cocktails.map(cocktail => <CocktailCard key={cocktail.id} cocktail={cocktail} delete={handleDeleteCocktail}/>)}
+                    </section>
+                </div>
+                <div>
+            </div>
+        </>
+        )
+    }
 }

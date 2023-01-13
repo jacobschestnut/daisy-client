@@ -11,16 +11,12 @@ export const Daisy = () => (
 
     <>
         <Route render={() => {
-            if (localStorage.getItem("daisy_token")) {
-                return <>
-                    <Route>
-                        <NavBar />
-                        <ApplicationViews />
-                    </Route>
-                </>
-            } else {
-                return <Redirect to="/login" />
-            }
+            return <>
+                <Route>
+                    <NavBar />
+                    <ApplicationViews />
+                </Route>
+            </>
         }} />
 
         <Route path="/login">
