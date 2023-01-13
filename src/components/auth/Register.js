@@ -23,7 +23,7 @@ export const Register = () => {
                 "password": password.current.value
             }
 
-            return fetch("https://make-my-daisy-server.herokuapp.com/register", {
+            return fetch("http://localhost:8000/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

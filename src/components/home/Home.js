@@ -15,7 +15,6 @@ export const Home = () => {
 
     return (
         <div className="home">
-            {/* <h1>Daisy</h1> */}
             <div id="home-btns">
                 <Link to={`/quiz`} id="quiz-card" className="home-card">
 

@@ -29,6 +29,19 @@ export const CocktailForm = () => {
         img_url: ""
     })
 
+    // <Route render={() => {
+    //     if (localStorage.getItem("daisy_token")) {
+    //         return <>
+    //             <Route>
+    //                 <NavBar />
+    //                 <ApplicationViews />
+    //             </Route>
+    //         </>
+    //     } else {
+    //         return <Redirect to="/login" />
+    //     }
+    // }} />
+
     useEffect(() => {
         getPreparations().then((data) => setPreparations(data))
         getIngredients().then((data) => setIngredients(data))
