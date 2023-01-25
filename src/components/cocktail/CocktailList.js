@@ -13,12 +13,13 @@ const handleDeleteCocktail = (id) => {
 
 export const CocktailList = () => {
     const history = useHistory();
-    const [ cocktails, setCocktails ] = useState([])
-
+    const [cocktails, setCocktails] = useState([]);
+  
     useEffect(() => {
-        getCocktails().then(data => setCocktails(data))
-        console.log(cocktails)
-    }, [])
+        getCocktails().then((cocktails) => {
+            setCocktails(cocktails);
+        })
+    }, []);
 
     if (localStorage.getItem("daisy_token")) {
         return (
@@ -49,11 +50,6 @@ export const CocktailList = () => {
                 <SearchBar id="searchBar-font" placeholder="Search for a cocktail..." data={cocktails}/>
             </div>
             <div className="main">
-                    <button className="btn"
-                        onClick={() => {
-                            history.push({ pathname: "/newcocktail" })
-                        }}
-                    >Add Cocktail</button>
                 </div>
                 <div id="cocktails">
                     <section className="cocktail_cards">

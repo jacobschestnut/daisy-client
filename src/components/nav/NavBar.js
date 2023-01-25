@@ -32,7 +32,9 @@ export const NavBar = () => {
                                 }}
                             >Logout</button>
                         </div> 
-                    </div>:
+                    </div>
+                    
+                    :
 
                     <div className="nav-icons">
                         <div className="nav-item">
@@ -55,8 +57,6 @@ export const NavBar = () => {
                             >Login</button>
                         </div> 
                     </div>
-
-
                     // <>
                     //     <li className="nav-item">
                     //         <Link className="nav-link" to="/login">Login</Link>
